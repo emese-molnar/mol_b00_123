@@ -21,14 +21,19 @@ set(ament_dependencies
   geometry_msgs
 )
 
-# add_executable(simple_sub_node src/print_pose.cpp)
-# ament_target_dependencies(simple_sub_node ${ament_dependencies} )
+add_executable(point_generator src/p_pub.cpp)
+ament_target_dependencies(point_generator ${ament_dependencies} )
+
+add_executable(dist_sub_pub src/dist.cpp)
+ament_target_dependencies(dist_sub_pub ${ament_dependencies} )
 
 install(DIRECTORY launch
   DESTINATION share/${PROJECT_NAME})
 
 install(TARGETS
-# simple_sub_node
+point_generator
+dist_sub_pub
+
 DESTINATION lib/${PROJECT_NAME})
 
 ament_package()
